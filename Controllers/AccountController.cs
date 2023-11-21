@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-
 using System.Threading.Tasks;
 using lan_week.Models;
 using lan_week.Controllers;
+using lan_week;
 
 public class AccountController : Controller
 {
@@ -16,24 +15,32 @@ public class AccountController : Controller
         _userManager = userManager;
         _signInManager = signInManager;
     }
-    [HttpGet]
-    public IActionResult Login(string? returnUrl = null)
+    public IActionResult Index()
     {
-        ViewData["ReturnUrl"] = returnUrl;
+        var viewModel = new AccountIndexViewModel
+        {
+            LoginViewModel = new LoginViewModel(),
+            RegisterViewModel = new RegisterViewModel()
+        };
+        return View(viewModel);
+    }
+
+    [HttpGet]
+    public IActionResult Login(string? returnUrl)
+    {
         return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+    public async Task<IActionResult> Login(LoginViewModel model)
     {
-        ViewData["ReturnUrl"] = returnUrl;
         if (ModelState.IsValid)
         {
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
             if (result.Succeeded)
             {
-                return RedirectToLocal(returnUrl);
+                return RedirectToAction(nameof(HomeController.Index), "Home");
             }
             else
             {
