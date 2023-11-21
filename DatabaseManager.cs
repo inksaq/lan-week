@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-public class DatabaseManager : IdentityDbContext
+public class DatabaseManager : IdentityDbContext<IdentityUser>
+
 {
     public DbSet<Member> Members { get; set; }
     public DbSet<Article> Articles { get; set; }

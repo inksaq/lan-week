@@ -1,7 +1,7 @@
 namespace lan_week.Models;
 using System.ComponentModel.DataAnnotations;
 
-public class ResetPasswordViewModel
+public class ForgotPasswordViewModel
 {
     [Required]
     [EmailAddress]

@@ -1,10 +1,9 @@
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-
 using System.Threading.Tasks;
 using lan_week.Models;
 using lan_week.Controllers;
+using lan_week;
 
 public class AccountController : Controller
 {
@@ -16,24 +15,32 @@ public class AccountController : Controller
         _userManager = userManager;
         _signInManager = signInManager;
     }
-    [HttpGet]
-    public IActionResult Login(string? returnUrl = null)
+    public IActionResult Index()
     {
-        ViewData["ReturnUrl"] = returnUrl;
+        var viewModel = new AccountIndexViewModel
+        {
+            LoginViewModel = new LoginViewModel(),
+            RegisterViewModel = new RegisterViewModel()
+        };
+        return View(viewModel);
+    }
+
+    [HttpGet]
+    public IActionResult Login(string? returnUrl)
+    {
         return View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+    public async Task<IActionResult> Login(LoginViewModel model)
     {
-        ViewData["ReturnUrl"] = returnUrl;
         if (ModelState.IsValid)
         {
             var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
             if (result.Succeeded)
             {
-                return RedirectToLocal(returnUrl);
+                return RedirectToAction(nameof(HomeController.Index), "Home");
             }
             else
             {
@@ -79,14 +86,14 @@ public class AccountController : Controller
     }
 
     [HttpGet]
-    public IActionResult ResetPassword(string code = null)
+    public IActionResult ForgotPassword(string? code)
     {
-        return code == null ? View("Error") : View();
+        return code == null ? View() : View();
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+    public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel model)
     {
         if (!ModelState.IsValid)
         {
@@ -95,19 +102,19 @@ public class AccountController : Controller
         var user = await _userManager.FindByEmailAsync(model.Email);
         if (user == null)
         {
-            return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
+            return RedirectToAction(nameof(AccountController.ForgotPasswordConfirmation), "Account");
         }
         var result = await _userManager.ResetPasswordAsync(user, model.Code, model.Password);
         if (result.Succeeded)
         {
-            return RedirectToAction(nameof(AccountController.ResetPasswordConfirmation), "Account");
+            return RedirectToAction(nameof(AccountController.ForgotPasswordConfirmation), "Account");
         }
         AddErrors(result);
         return View();
     }
 
     [HttpGet]
-    public IActionResult ResetPasswordConfirmation()
+    public IActionResult ForgotPasswordConfirmation()
     {
         return View();
     }
