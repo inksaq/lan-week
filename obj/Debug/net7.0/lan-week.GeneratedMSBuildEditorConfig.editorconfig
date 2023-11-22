@@ -32,6 +32,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Administrator/Desktop/lan-week/Views/Competitions/Competition.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGV0aXRpb25zXENvbXBldGl0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrator/Desktop/lan-week/Views/Competitions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29tcGV0aXRpb25zXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Administrator/Desktop/lan-week/Views/Home/Contact.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb250YWN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -40,20 +48,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/Desktop/lan-week/Views/Lans/Competition.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuc1xDb21wZXRpdGlvbi5jc2h0bWw=
+[C:/Users/Administrator/Desktop/lan-week/Views/News/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Administrator/Desktop/lan-week/Views/Lans/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTGFuc1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Administrator/Desktop/lan-week/Views/News/Create..cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xDcmVhdGUuLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Administrator/Desktop/lan-week/Views/News/News.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xOZXdzLmNzaHRtbA==
+[C:/Users/Administrator/Desktop/lan-week/Views/News/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmV3c1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Administrator/Desktop/lan-week/Views/Shared/Error.cshtml]
