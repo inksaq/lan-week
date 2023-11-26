@@ -1,13 +1,12 @@
 @model IEnumerable<NewsArticle>
 
-<h1>LAN_Week - News Articles</h1>
+<h1>All News Articles</h1>
 
 @foreach (var article in Model)
 {
     <div>
-        <h4>@article.Title</h4>
+        <h3>@article.Title</h3>
         <p>@article.Content</p>
         <p>Published on @article.PublishedDate.ToShortDateString() by @article.AuthorId</p>
     </div>
-    
 }

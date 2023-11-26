@@ -1,0 +1,30 @@
+@model CompetitionIndexViewModel
+@if (User.Identity.IsAuthenticated)
+{
+    <h1>Upcoming Competitions</h1>
+    @foreach (var competition in Model.UpcomingCompetitions)
+    {
+        <div>
+            <h4>@competition.Name</h4>
+            <h4>@competition.GameType</h4>
+            <p>Date: @competition.EventDate.ToString("yyyy-MM-dd")</p>
+            <p>GameType: @competition.GameType</p>
+            <p>PrizePool: @competition.PrizePool</p>
+            <p>Description: @competition.Description</p>
+            <a asp-controller="Competition" asp-action="Details" asp-route-id="@competition.CompetitionId">Results</a>
+        </div>
+    }
+}
+<h1>Past Competitions</h1>
+@foreach (var competition in Model.PastCompetitions)
+{
+    <div>
+        <h4>@competition.Name</h4>
+        <h4>@competition.GameType</h4>
+        <p>Date: @competition.EventDate.ToString("yyyy-MM-dd")</p>
+        <p>GameType: @competition.GameType</p>
+        <p>PrizePool: @competition.PrizePool</p>
+        <p>Description: @competition.Description</p>
+        <a asp-controller="Competition" asp-action="Details" asp-route-id="@competition.CompetitionId">Results</a>
+    </div>
+}

@@ -1,0 +1,21 @@
+@model IEnumerable<Competition>
+
+@{
+    ViewData["Title"] = "Upcoming Competitions";
+}
+
+
+<h2>Upcoming Competitions</h2>
+
+@foreach (var competition in Model)
+{
+    <div>
+        <h3>@competition.Name</h3>
+        <p>Date: @competition.EventDate.ToString("yyyy-MM-dd") - @competition.Location</p>
+        <p>GameType: @competition.GameType</p>
+        <p>PrizePool: @competition.PrizePool</p>
+        <p>Description: @competition.Description</p>
+        <!-- Link to join or view more details -->
+        <a asp-controller="Competition" asp-action="Details" asp-route-id="@competition.CompetitionId">Details</a>
+    </div>
+}

@@ -17,7 +17,10 @@ public class NewsController : Controller
 
     public async Task<IActionResult> Index()
     {
-        var newsArticles = await _context.NewsArticles.ToListAsync();
+        var newsArticles = await _context.NewsArticles
+                                        .OrderByDescending(article => article.PublishedDate) 
+                                        .Take(3)
+                                        .ToListAsync();
         return View(newsArticles);
     }
 
@@ -25,6 +28,13 @@ public class NewsController : Controller
     public IActionResult Create()
     {
         return View();
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> All()
+    {
+        var newsArticles = await _context.NewsArticles.ToListAsync();
+        return View(newsArticles);
     }
 
     [HttpPost]

@@ -27,7 +27,7 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="newsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">News</a>
                             <ul class="dropdown-menu" aria-labelledby="newsDropdown">
-                                <li><a class="dropdown-item" asp-controller="News" asp-action="Index">List All News</a></li>
+                                <li><a class="dropdown-item" asp-controller="News" asp-action="All">List All News</a></li>
                                 <li><a class="dropdown-item" asp-controller="News" asp-action="Create">Create News Article</a></li>
                             </ul>
                         </li>
@@ -38,9 +38,25 @@
                             <a class="nav-link text-dark" asp-controller="News" asp-action="Index">News</a>
                         </li>
                     }
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="Competitions" asp-action="Index">Upcoming Competitions</a>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="competitionsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Competitions
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="competitionsDropdown">
+                            <li><a class="dropdown-item" asp-controller="Competition" asp-action="Create">Create Competitions</a></li>
+                            <li><a class="dropdown-item" asp-controller="Competition" asp-action="Upcoming">Upcoming Competitions</a></li>
+                            <li><a class="dropdown-item" asp-controller="Competition" asp-action="Past">Past Competitions</a></li>
+                        </ul>
                     </li>
+                    } 
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-controller="Competition" asp-action="Index">Competitions</a>
+                        </li>
+                    }
                 </ul>
                 @if (User.Identity.IsAuthenticated)
                 {
@@ -84,7 +100,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2023 - lan_week - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2023 - lan_week - <a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
